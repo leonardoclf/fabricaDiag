@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Pacientes, diagnosticos, Prevencao
 from base.forms import PacientesForm, diagnosticosForm, PrevencaoForm
+from accounts.views import login_view
 
+@login_required
 def home(request):
     context = {
         'Pacientes': Pacientes.objects.all(),

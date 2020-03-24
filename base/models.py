@@ -30,8 +30,8 @@ class diagnosticos(models.Model):
         return self.Pacientes.nome
 
 class Prevencao(models.Model):
-    virus = models.CharField(max_length=50)
-    prevenir = models.TextField()
+    virus = models.CharField(max_length=50, verbose_name="Nome da Doença")
+    prevenir = models.TextField(verbose_name="Forma de Prevenção")
 
     def __str__(self):
         return self.virus
