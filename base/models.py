@@ -3,15 +3,15 @@ from django.utils import timezone
 
 # Create your models here.
 class Pacientes(models.Model):
-    nome = models.CharField(max_length=100)
-    dataNasc = models.DateField() 
-    genero = models.CharField(max_length=50)
-    cpf = models.CharField(max_length=50)
-    tipoSang = models.CharField(max_length=50)
-    sintomas = models.CharField(max_length=150)
-    descrCaso = models.TextField() 
-    gravidade = models.CharField(max_length=50)
-    dataInc = models.DateTimeField(default=timezone.now)
+    nome = models.CharField(max_length=100, verbose_name="Nome Completo")
+    dataNasc = models.DateField(verbose_name="Data do Nascimento") 
+    genero = models.CharField(max_length=50, verbose_name="Gênero do Paciente")
+    cpf = models.CharField(max_length=50, verbose_name="Número do CPF")
+    tipoSang = models.CharField(max_length=50, verbose_name="Tipo Sanguíneo")
+    sintomas = models.CharField(max_length=150, verbose_name="Sintomas")
+    descrCaso = models.TextField(verbose_name="Descrição do Caso") 
+    gravidade = models.CharField(max_length=50, verbose_name="Grau de Gravidade")
+    dataInc = models.DateTimeField(default=timezone.now, verbose_name="Data do Cadastro")
 
     def __str__(self):
         return self.nome

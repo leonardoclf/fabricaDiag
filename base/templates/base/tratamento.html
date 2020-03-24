@@ -1,0 +1,23 @@
+{% extends 'base/modelo.html' %}
+{%block content %}
+
+
+<div class="row">
+    {% for Prevencao in Prevencao %}
+    
+    <div class="carddoenca col-lg-3 col-md-6">
+        <div class="card">
+            <h2 class="card-header">{{ Prevencao.virus }}</h5>
+            <div class="card-body">
+              <h5 class="card-title"> Prevenção</h5>
+              <p class="card-text">{{ Prevencao.prevenir }}</p>
+              <a href="{% url 'base-editarp' Prevencao.id %}" class="btn btn-primary btn-sm">Editar</a>
+              <a href="{% url 'base-apagarp' Prevencao.id %}" class="btn btn-danger btn-sm">Apagar</a>
+            </div>
+          </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}      
+
+

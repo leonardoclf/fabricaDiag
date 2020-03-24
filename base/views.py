@@ -4,7 +4,8 @@ from base.forms import PacientesForm, diagnosticosForm, PrevencaoForm
 
 def home(request):
     context = {
-        'Pacientes': Pacientes.objects.all()
+        'Pacientes': Pacientes.objects.all(),
+        'diagnosticos': diagnosticos.objects.all(),
     }
     return render(request, 'base/home.html', context)
 
@@ -23,7 +24,6 @@ def cadpaciente(request):
         diag_form = diagnosticosForm()    
     context = {'form': form, 'diag_form': diag_form}    
     return render(request, 'base/cadpaciente.html', context)
-
 
 def cadvirus(request):
     # Isso aqui conserta o bug do {form:form}
@@ -52,6 +52,26 @@ def apagar(request, id):
         return redirect('base-home')
     return render(request, 'base/apagar.html', {'paciente': paciente})
 
+def tratamento(request):
+    context = {
+        'Prevencao': Prevencao.objects.all(),
+    }
+    return render(request, 'base/tratamento.html', context)
+
+def editarp(request, id):
+    prevencao = get_object_or_404(Prevencao, pk=id)
+    form = PrevencaoForm(request.POST or None, instance=prevencao)
+    if form.is_valid():
+        form.save()
+        return redirect("base-tratamento")
+    return render(request, "base/editarp.html", {'form': form})
+
+def apagarp(request, id):
+    prevencao = get_object_or_404(Prevencao, pk=id)
+    if request.method == "POST":
+        prevencao.delete()
+        return redirect('base-tratamento')
+    return render(request, 'base/apagarp.html', {'prevencao': prevencao})
 
 
 

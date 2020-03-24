@@ -4,11 +4,12 @@
 
 <div class="row">
     {% for Pacientes in Pacientes %}
+    
     <div class="carddoenca col-lg-3 col-md-6">
         <div class="card">
-            <h5 class="card-header">{{ Pacientes.nome }}</h5>
+            <h2 class="card-header">{{ Pacientes.nome }}</h5>
             <div class="card-body">
-              <h5 class="card-title">Diagnostico: Nome da doença</h5>
+              <h5 class="card-title"> {{ Pacientes.diagnosticos.diagnostico }}</h5>
               <p class="card-text">Nº do CPF: {{ Pacientes.cpf }}</p>
               <p class="card-text">Gênero: {{ Pacientes.genero }}</p>
               <p class="card-text">Data do Nascimento: {{ Pacientes.dataNasc }}</p>
@@ -16,8 +17,8 @@
               <p class="card-text">Sintomas: {{ Pacientes.sintomas }}</p>
               <p class="card-text">Descrição do caso: {{ Pacientes.descrCaso }}</p>
               <p class="card-text">Data da consulta: {{ Pacientes.dataInc }}</p>
-              <a href="{% url 'base-editar' Pacientes.id %}" class="btn btn-primary">Editar</a>
-              <a href="{% url 'base-apagar' Pacientes.id %}" class="btn btn-primary">Apagar</a>
+              <a href="{% url 'base-editar' Pacientes.id %}" class="btn btn-primary btn-sm">Editar</a>
+              <a href="{% url 'base-apagar' Pacientes.id %}" class="btn btn-danger btn-sm">Apagar</a>
             </div>
           </div>
     </div>
