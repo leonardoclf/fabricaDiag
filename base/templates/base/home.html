@@ -1,30 +1,41 @@
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica</title>
-    <!-- VAI TER UM FABICON AQUI -->
-    <!-- BOOTSTRAP -->
-</head>
-<body>
-    <h1>HOME</h1>
-    <h2>Algum lugar aqui terá o dashboard com o pacientes e virus</h2>
-    <h2>Tratamento dos virus com um crud?</h2>
-    <ul>
-        <li>Cadastro de Paciente - numa nav</li>
-        <li>Fichas dos pacientes com seu diag</li>
-        <li>Logout</li>
-    </ul>
+{% extends 'base/modelo.html' %}
+{%block content %}
+
+
+<div class="row">
     {% for Pacientes in Pacientes %}
-        <h1>{{ Pacientes.nome }}</h1>
-        <hr>
+    <div class="carddoenca col-lg-4">
+        <div class="card">
+            <h5 class="card-header">{{ Pacientes.nome }}</h5>
+            <div class="card-body">
+              <h5 class="card-title">Nome da doença</h5>
+              <p class="card-text">{{ Pacientes.cpf }}</p>
+              <p class="card-text">{{ Pacientes.genero }}</p>
+              <p class="card-text">{{ Pacientes.dataNasc }}</p>
+              <p class="card-text">{{ Pacientes.tipoSang }}</p>
+              <p class="card-text">{{ Pacientes.sintomas }}</p>
+              <p class="card-text">{{ Pacientes.descrCaso }}</p>
+              <p class="card-text">{{ Pacientes.dataInc }}</p>
+              <a href="#" class="btn btn-primary">Editar</a>
+              <a href="#" class="btn btn-primary">Apagar</a>
+            </div>
+          </div>
+    </div>
     {% endfor %}
-
-   
-
+</div>
 
 
 
 
-</body>
-</html>
+
+
+
+{% endblock content %}      
+
+
+
+
+
+
+
+

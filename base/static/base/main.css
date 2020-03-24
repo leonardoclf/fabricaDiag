@@ -1,0 +1,16 @@
+body {
+    background-color: #fcf8e8;
+    color: black;
+}
+
+.container-fluid {
+    padding: 0
+}
+
+.row {
+    margin: 30px 5px 5px 5px;
+}
+
+.carddoenca {
+    margin-top: 30px;
+}
