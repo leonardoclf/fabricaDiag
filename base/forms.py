@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from base.models import Pacientes, diagnosticos
+from base.models import Pacientes, diagnosticos, Prevencao
 
 
 class PacientesForm(ModelForm):
@@ -11,4 +11,9 @@ class diagnosticosForm(ModelForm):
     class Meta:
         model = diagnosticos
         fields = ['diagnostico']
+
+class PrevencaoForm(ModelForm):
+    class Meta:
+        model = Prevencao
+        fields = ['virus', 'prevenir']
     

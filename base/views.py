@@ -1,9 +1,12 @@
-from django.shortcuts import render, redirect
-from .models import Pacientes, diagnosticos
-from base.forms import PacientesForm, diagnosticosForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Pacientes, diagnosticos, Prevencao
+from base.forms import PacientesForm, diagnosticosForm, PrevencaoForm
 
 def home(request):
-    return render(request, 'base/home.html')
+    context = {
+        'Pacientes': Pacientes.objects.all()
+    }
+    return render(request, 'base/home.html', context)
 
 def cadpaciente(request):
     if request.method == 'POST':
@@ -20,5 +23,21 @@ def cadpaciente(request):
         diag_form = diagnosticosForm()    
     context = {'form': form, 'diag_form': diag_form}    
     return render(request, 'base/cadpaciente.html', context)
+
+
+def cadvirus(request):
+    # Isso aqui conserta o bug do {form:form}
+    form = PrevencaoForm()
+    if request.method == 'POST':
+        form = PrevencaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('base-home')
+        else:
+            form = PrevencaoForm()
+    return render(request, 'base/cadvirus.html', {'form': form})
+
+
+
 
     

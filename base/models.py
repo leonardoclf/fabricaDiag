@@ -29,6 +29,12 @@ class diagnosticos(models.Model):
     def __str__(self):
         return self.Pacientes.nome
 
+class Prevencao(models.Model):
+    virus = models.CharField(max_length=50)
+    prevenir = models.TextField()
+
+    def __str__(self):
+        return self.virus
 
 
 
