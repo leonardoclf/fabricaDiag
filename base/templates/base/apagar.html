@@ -1,0 +1,11 @@
+{% extends 'base/modelo.html' %}
+{% block content %}
+    <form method="POST">
+        <h1>Deseja remover "<u>{{ paciente.nome }}</u>"?</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <hr>
+        <button class="btn btn btn-danger" type="submit">Deleta</button>
+        <input class="btn btn-outline-secondary" type="button" onclick="window.location.replace('{% url 'base-home' %}')" value="Não" />
+    </form>
+{% endblock %}

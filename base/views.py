@@ -37,6 +37,23 @@ def cadvirus(request):
             form = PrevencaoForm()
     return render(request, 'base/cadvirus.html', {'form': form})
 
+def editar(request, id):
+    paciente = get_object_or_404(Pacientes, pk=id)
+    form = PacientesForm(request.POST or None, instance=paciente)
+    if form.is_valid():
+        form.save()
+        return redirect("base-home")
+    return render(request, "base/editar.html", {'form': form})
+
+def apagar(request, id):
+    paciente = get_object_or_404(Pacientes, pk=id)
+    if request.method == "POST":
+        paciente.delete()
+        return redirect('base-home')
+    return render(request, 'base/apagar.html', {'paciente': paciente})
+
+
+
 
 
 
