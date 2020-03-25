@@ -4,7 +4,6 @@
 
 <div class="row">
 <form method="POST">
-    <h1>Atualizar dados do paciente</h1>
     {% csrf_token %}
     {{ form|crispy }}
     <hr>
@@ -12,5 +11,4 @@
     <input class="btn btn-outline-secondary" type="button" onclick="window.location.replace('{% url 'base-home' %}')" value="Não" />
 </form>
 </div>
-
 {% endblock content %}
