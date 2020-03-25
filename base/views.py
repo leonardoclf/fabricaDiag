@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
+import json
 from django.contrib.auth.decorators import login_required
 from .models import Pacientes, diagnosticos, Prevencao
 from base.forms import PacientesForm, diagnosticosForm, PrevencaoForm
 from accounts.views import login_view
+
 
 @login_required
 def home(request):
@@ -28,6 +30,14 @@ def cadpaciente(request):
     context = {'form': form, 'diag_form': diag_form}    
     return render(request, 'base/cadpaciente.html', context)
 
+def editar(request, id):
+    paciente = get_object_or_404(Pacientes, pk=id)
+    form = PacientesForm(request.POST or None, instance=paciente)
+    if form.is_valid():
+        form.save()
+        return redirect("base-home")
+    return render(request, "base/editar.html", {'form': form})    
+
 def cadvirus(request):
     # Isso aqui conserta o bug do {form:form}
     form = PrevencaoForm()
@@ -40,13 +50,6 @@ def cadvirus(request):
             form = PrevencaoForm()
     return render(request, 'base/cadvirus.html', {'form': form})
 
-def editar(request, id):
-    paciente = get_object_or_404(Pacientes, pk=id)
-    form = PacientesForm(request.POST or None, instance=paciente)
-    if form.is_valid():
-        form.save()
-        return redirect("base-home")
-    return render(request, "base/editar.html", {'form': form})
 
 def apagar(request, id):
     paciente = get_object_or_404(Pacientes, pk=id)
@@ -76,7 +79,33 @@ def apagarp(request, id):
         return redirect('base-tratamento')
     return render(request, 'base/apagarp.html', {'prevencao': prevencao})
 
+def grafico(request):
+    pacientes = Pacientes.objects.all()
+    diagnosticosAll = diagnosticos.objects.all()
+    
+    numDiagnosticos = {d.diagnostico:0 for d in diagnosticosAll}
 
+    for p in pacientes:
+        print(p.nome)
+        numDiagnosticos[p.diagnosticos.diagnostico] = numDiagnosticos[p.diagnosticos.diagnostico] + 1
+    
+    x = list(numDiagnosticos.keys())
+    x.sort()
+    y = [numDiagnosticos[d] for d in x]
+
+    context = {
+        'x': json.dumps(x),
+        'y': json.dumps(y)
+    }
+    return render(request, 'base/grafico.html', context)
+
+
+
+
+
+ 
+
+        
 
 
 

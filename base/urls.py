@@ -5,6 +5,7 @@ from accounts.views import login_view, register_view, logout_view
 urlpatterns = [
     path('', views.home, name="base-home"),
     path('accounts/login/', login_view),
+    path('grafico/', views.grafico, name="grafico"),
     path('accounts/registro/', register_view, name="registro"),
     path('accounts/logout/', logout_view, name="logout"),
     path('cadpaciente', views.cadpaciente, name="base-cadpaciente"),   
