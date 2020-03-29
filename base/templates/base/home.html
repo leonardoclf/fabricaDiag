@@ -15,6 +15,7 @@
               <p class="card-text"><strong>Gênero:</strong> {{ Pacientes.genero }}</p>
               <p class="card-text"><strong>Tipo sanguíneo:</strong> {{ Pacientes.tipoSang }}</p>
               <p class="card-text"><strong>Sintomas:</strong> {{ Pacientes.sintomas }}</p>
+              <p class="card-text"><strong>Grau de Gravidade:</strong> {{ Pacientes.gravidade }}</p>
               <p class="card-text"><strong>Descrição do caso:</strong> {{ Pacientes.descrCaso }}</p>
               <p class="card-text"><strong>Data da consulta:</strong> {{ Pacientes.dataInc }}</p>
               <a href="{% url 'base-editar' Pacientes.id %}" class="btn btn-primary btn-sm">Editar</a>
@@ -25,6 +26,7 @@
     {% endfor %}
 </div>
 {% endblock content %}      
+
 
 
 
