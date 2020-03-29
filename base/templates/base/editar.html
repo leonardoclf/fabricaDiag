@@ -2,13 +2,13 @@
 {% load crispy_forms_tags %}
 {%block content %}
 
-<div class="row">
+<div class="row formA">
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
     <hr>
-    <button class="btn btn-primary btn-sm"" type="submit">Salvar</button>
-    <input class="btn btn-outline-secondary" type="button" onclick="window.location.replace('{% url 'base-home' %}')" value="Não" />
+    <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
+    <input class="btn btn-outline-secondary btn-sm" type="button" onclick="window.location.replace('{% url 'base-home' %}')" value="Voltar" />
 </form>
 </div>
 {% endblock content %}

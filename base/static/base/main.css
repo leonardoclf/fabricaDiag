@@ -1,6 +1,9 @@
 body {
     background-color: #D3D3D3;
     color: black;
+    font-family: "Montserrat";
+    text-align: justify;
+    line-height: 1.5;
 }
 
 h2 {
@@ -38,3 +41,10 @@ h5 {
     font-weight: bold;
 }
 
+.formA {
+    margin-left: 20%;
+}
+
+.delA {
+    margin-top: 10%;
+}
