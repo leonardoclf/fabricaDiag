@@ -1,1 +1,1 @@
-web: gunicorn fabricaclinica.settings
+web: gunicorn fabricaClinica.wsgi
