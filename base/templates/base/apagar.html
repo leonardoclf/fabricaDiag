@@ -6,7 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <hr>
-        <button class="btn btn btn-danger" type="submit">Deleta</button>
+        <button class="btn btn btn-danger" type="submit">Deletar</button>
         <input class="btn btn-outline-secondary" type="button" onclick="window.location.replace('{% url 'base-home' %}')" value="Não" />
     </form>
 </div>    
